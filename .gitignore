@@ -1,0 +1,16 @@
+*.qip
+*.qsf
+*.qpf
+*.qsf.bak
+*.qws
+*.v.bak
+*.dat
+*.vhd
+*.psm
+*.prw
+*.dbs
+*.wlf
+*.mpf
+*.mti
+*.rpt
+*.sdc
