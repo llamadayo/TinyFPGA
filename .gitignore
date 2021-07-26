@@ -14,3 +14,8 @@
 *.mti
 *.rpt
 *.sdc
+*.dblite
+*.history
+hardware.*  
+SPI_suc/
+camera/
