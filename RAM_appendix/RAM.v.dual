@@ -1,0 +1,35 @@
+module RAM (din, write_en, waddr, wclk, raddr, rclk, dout);//512x8
+parameter addr_width = 11;
+parameter data_width = 16;
+input [addr_width-1:0] waddr, raddr;
+input [data_width-1:0] din;
+input write_en, wclk, rclk;
+output reg [data_width-1:0] dout;
+reg [data_width-1:0] mem [(1<<addr_width)-1:0];
+
+reg [3:0] write_counter;
+reg [3:0] read_counter;
+reg read_en = 1'b0;
+// integer i;
+
+always @(posedge wclk) // Write memory.
+begin
+  if (write_en) begin
+    // for (i = 0; i < 2048; i = i + 1)begin
+      // din <= ~din;
+      // mem[waddr] <= din + 16'b1; // Using write address bus.
+      // waddr <= waddr + 11'b1;
+
+    // end
+    write_counter <= write_counter + 1;
+    mem[waddr] <= din; // Using write address bus.
+  end
+  else
+    write_counter <= 0;
+end
+
+always @(negedge rclk ) // Read memory.
+begin
+  dout <= mem[raddr]; // Using read address bus.
+end
+endmodule

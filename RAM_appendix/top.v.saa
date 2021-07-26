@@ -1,0 +1,43 @@
+// look in pins.pcf for all the pin names on the TinyFPGA BX board
+module top (
+    input CLK,    // 16MHz clock
+
+
+
+/*********************************************************************************
+    SPI Master
+**********************************************************************************/
+    input wire MISO, send,
+    output wire MOSI, SCLK, SS, done,
+    output PIN_13,
+    output PIN_14,PIN_20,PIN_21,
+
+
+    output USBPU  // USB pull-up resistor
+
+
+);
+    // drive USB pull-up resistor to '0' to disable USB
+    assign USBPU = 0;
+    reg[15:0] d_out;
+
+
+// RAM ram(
+//   .din({8{2'b10}}),
+//   .addr(11'b0),
+//   .write_en(1'b1),
+//   .clk(CLK),
+//   .dout(d_out)
+//   );
+
+spi_master spi(
+  .clk(CLK),
+  .rst(0),
+  .data_in({7{1'b1}}),// d_out[6:0]
+  // .MISO()
+
+
+  );
+
+
+endmodule
