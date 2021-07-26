@@ -19,3 +19,7 @@
 hardware.*  
 SPI_suc/
 camera/
+
+spi_ctrl.v
+spi_master.v
+spi_shift.v
